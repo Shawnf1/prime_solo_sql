@@ -19,7 +19,8 @@ JOIN employees AS e ON fa.employee_id = e.id
 WHERE e.first_name = 'Michael');
 
 -- 6. What are the titles of all the books that are in stock today?
-SELECT isbn_to_title(s.isbn) AS title FROM stock AS s GROUP BY title ORDER BY title;
+--SELECT isbn_to_title(s.isbn) AS title FROM stock AS s GROUP BY title ORDER BY title; -- if looking for having stock
+SELECT isbn_to_title(s.isbn) AS title FROM daily_inventory AS s WHERE is_stocked = TRUE ORDER BY title;
 
 -- 7. Insert one of your favorite books into the database.
 --    Hint: You’ll want to create data in at least 2 other tables to completely create this book.
